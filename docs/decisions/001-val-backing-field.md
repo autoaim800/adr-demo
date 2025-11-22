@@ -1,13 +1,15 @@
-# [ADR-001] Use 'val' for MutableStateFlow Backing Fields
+# ADR-001: Use 'val' for MutableStateFlow Backing Fields
 
-## Status
-Accepted
+## Decision
+Use `val` for backing fields
 
 ## Context
-In our codebase analysis, we identified inconsistent usage of `var` vs `val` for `MutableStateFlow` backing fields:
-
+**Forbidden:**
 ```kotlin
-// Current inconsistent patterns:
 private var _state1 = MutableStateFlow<State>(State.Loading)  // ❌ Using 'var'
+```
+
+**Approved:**
+```kotlin
 private val _state2 = MutableStateFlow<State>(State.Loading)  // ✅ Using 'val'
 ```
